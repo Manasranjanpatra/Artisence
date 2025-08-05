@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    ports:
+      - "8088:8088"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/ecommerceapplication
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Manmathasql@07
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=Manmathasql@07
+      - MYSQL_DATABASE=ecommerceapplication
+    ports:
+      - "3307:3306"
+    restart: always
+
+
+
+# version: '3.9'
+
+# services:
+#   db:
+#     image: mysql:latest
+#     environment:
+#       MYSQL_ROOT_PASSWORD: Manmathasql@07
+#       MYSQL_DATABASE: ecommerceapplication
+#     ports:
+#       - "3306:3306"
+#     restart: always
